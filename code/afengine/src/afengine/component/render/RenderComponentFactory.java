@@ -103,7 +103,7 @@ public class RenderComponentFactory implements IComponentFactory{
         else{
             font= ((IGraphicsTech)((WindowApp)AppState.getRunningApp())
                     .getGraphicsTech()).createFont("Dialog", false,
-                            IFont.FontStyle.PLAIN, 30);            
+                            IFont.FontStyle.PLAIN,Integer.parseInt(sizes));            
         }
         Element colore = element.element("color");
         String colors;
