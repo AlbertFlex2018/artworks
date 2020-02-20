@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app>
+    <afengine  debug="true" logicpath="avg.story.AvgStoryTest" type="window"
+    typeboot="afengine.core.WindowApp$WindowAppBoot"/>
+    <window size="800,600" title="SceneTest-Test1" 
+            tech="afengine.component.render.GraphicsTech_Java2D"
+            icon="test/asset/1.png">
+        <root class="afengine.component.render.SceneRenderComponentDraw"/>
+    </window>
+</app>

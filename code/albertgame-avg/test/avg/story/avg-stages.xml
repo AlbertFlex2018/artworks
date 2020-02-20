@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<avg-stages>
+    <stage name="chapter1">
+        <players>
+            <player1>
+                <normal texture="test/avg/story/continue-b.png"/>
+                <angry texture="test/avg/story/quit-b.png"/>
+                <help texture="test/avg/story/start-b.png"/>                
+            </player1>
+        </players>
+        <stories>
+            <story actionpath="test/avg/story/story/story1.xml"/>
+            <story actionpath="test/avg/story/story/story2.xml"/>
+            <story actionpath="test/avg/story/story/story3.xml"/>
+            <story actionpath="test/avg/story/story/story4.xml"/>
+        </stories>
+    </stage>
+    <stage name="chapter2">
+        <players>
+            <player1>
+                <normal texture="test/avg/story/continue-b.png"/>
+                <angry texture="test/avg/story/quit-b.png"/>
+                <help texture="test/avg/story/start-b.png"/>                
+            </player1>
+        </players>
+        <stories>
+            <story actionpath="test/avg/story/story/story1.xml"/>
+            <story actionpath="test/avg/story/story/story2.xml"/>
+            <story actionpath="test/avg/story/story/story3.xml"/>
+            <story actionpath="test/avg/story/story/story4.xml"/>
+        </stories>
+    </stage>
+</avg-stages>
