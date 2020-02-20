@@ -18,5 +18,9 @@ public class WordAction implements IStoryAction{
             return;
         }
         data.getDataMap().replace("word",args[1]);        
+        act(data,args[1]);
+    }
+    private void act(AvgData data,String word){
+        
     }
 }
