@@ -67,7 +67,7 @@ public class TextRenderComponent extends RenderComponent{
         float width = font.getFontWidth(text.value);
         float height=(float) (font.getFontHeight());
         float dx = (float) (ax-width*a.getX());
-        float dy = (float) (ay-height*a.getY());
+        float dy = (float) (ay-(height+height*a.getY()));
         
         float x1 = dx;
         float x2 = (float)(dx+width);
