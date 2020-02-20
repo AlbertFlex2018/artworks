@@ -64,12 +64,12 @@
                 <rendersize value="40"/>
             </datas>            
         </title-right>
-<!--        <dialog-back mod="test/scenetest2/modlibs.xml#imagemod">
+        <dialog-back mod="test/scenetest2/modlibs.xml#imagemod">
             <transform pos="30,350,0,0" rotate="0,0,0,0" scale="1,1,1,1" anchor="0,0,0,0"/>
             <datas>
                 <imagepath value="test/scenetest2/dialog.png"/>
             </datas>                       
-        </dialog-back>-->
+        </dialog-back>
         <word-line1 mod="test/scenetest2/modlibs.xml#textmod">
             <transform pos="50,370,0,0" rotate="0,0,0,0" scale="1,1,1,1" anchor="0,0,0,0"/>
             <datas>
