@@ -31,8 +31,8 @@ public class BehaviorBeanComponent extends ActorComponent{
             ActorBehavior be = beiter.next();
             be.awake();
         }
-    }
-    
+    }        
+        
     /**
      * update all behaviors
      * @param time

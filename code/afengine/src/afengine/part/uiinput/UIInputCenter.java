@@ -1,10 +1,6 @@
 package afengine.part.uiinput;
 
-import afengine.core.AppState;
 import afengine.core.util.Debug;
-import afengine.part.message.IMessageHandler;
-import afengine.part.message.Message;
-import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,16 +28,8 @@ public class UIInputCenter{
         activedfaceList=new LinkedList<>();
         preServlets=new HashMap<>();
         afterServlets=new HashMap<>();                
-        IMessageHandler exit=(Message msg) -> {
-            KeyEvent key=(KeyEvent)msg.extraObjs[0];
-            if(key.getKeyCode()==KeyEvent.VK_ESCAPE){
-                AppState.setValue("run","false");
-                return true;
-            }
-            return false;
-        };
-        addPreServlet(InputServlet.INPUT_KEY_UP,new InputServlet(InputServlet.INPUT_KEY_UP,"exit",exit));
     }
+        
     public List<UIFace> getFaceList() {
         return faceList;
     }

@@ -1,6 +1,7 @@
 package afengine.component.behavior;
 
 import afengine.core.util.Debug;
+import afengine.core.util.XMLEngineBoot;
 import afengine.part.scene.ActorComponent;
 import afengine.part.scene.IComponentFactory;
 import java.util.Iterator;
@@ -49,10 +50,11 @@ public class BehaviorBeanComponentFactory implements IComponentFactory{
         String name = be.getName();        
 
         try {
-            Class<?> cls = Class.forName(clsname);
-            Object obj = cls.newInstance();
-            ActorBehavior behavior = (ActorBehavior)obj;
-            if(behavior==null)return null;
+            ActorBehavior behavior = (ActorBehavior)XMLEngineBoot.instanceObj(clsname);
+            if(behavior==null){
+                Debug.log("class for behavior not correct!");
+                return null;
+            }
             
             Iterator<Element> valueiter = element.elementIterator();
             while(valueiter.hasNext()){
@@ -65,6 +67,7 @@ public class BehaviorBeanComponentFactory implements IComponentFactory{
             behavior.setName(name);
             return behavior;
         } catch (Exception ex) {
+            ex.printStackTrace();
             Debug.log("behavior create for - "+element.getName()+" failed. please check again.");
             return null;
         }                

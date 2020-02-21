@@ -1,7 +1,9 @@
 package afengine.part.uiinput;
 
+import afengine.core.AppState;
 import afengine.part.message.IMessageHandler;
 import afengine.part.message.Message;
+import java.awt.event.KeyEvent;
 
 public class InputServlet implements IMessageHandler{
     
@@ -31,6 +33,17 @@ public class InputServlet implements IMessageHandler{
 
     public final String servletName;
 
+    public static class ExitHandler implements IMessageHandler{
+        public boolean handle(Message msg){
+            KeyEvent key=(KeyEvent)msg.extraObjs[0];
+            if(key.getKeyCode()==KeyEvent.VK_ESCAPE){
+                AppState.setValue("run","false");
+                return true;
+            }
+            return false;
+        }
+    }
+    
     public InputServlet(long type,String name,IMessageHandler handler){
         this.handleType=type;
         this.handler=handler;

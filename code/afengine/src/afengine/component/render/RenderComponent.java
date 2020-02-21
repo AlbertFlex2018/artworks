@@ -5,8 +5,10 @@ import afengine.core.WindowApp;
 import afengine.core.util.Debug;
 import afengine.core.util.Vector;
 import afengine.core.window.IGraphicsTech;
+import afengine.part.scene.Actor;
 import afengine.part.scene.ActorComponent;
 import afengine.part.scene.SceneCamera;
+import java.util.Comparator;
 
 /**
  * base class for rendercomponent.<br>
@@ -17,12 +19,50 @@ import afengine.part.scene.SceneCamera;
  */
 public class RenderComponent extends ActorComponent{
     public static final String COMPONENT_NAME="Render";
+    
 
+    private static Comparator<Actor> comparator=(Actor o1, Actor o2) -> {
+        RenderComponent r1=(RenderComponent) o1.getComponent(RenderComponent.COMPONENT_NAME);
+        RenderComponent r2=(RenderComponent) o2.getComponent(RenderComponent.COMPONENT_NAME);
+        if(r1==null||r2==null)return 0;
+        
+        int diff=r1.getRenderOrder()-r2.getRenderOrder();
+        if(diff>0){
+            return 1;
+        }else if(diff<0)
+            return -1;
+        else return 0;
+    };;
+
+    public static Comparator<Actor> getComparator() {
+        return comparator;
+    }
+
+    public static void setComparator(Comparator<Actor> comparator) {
+        RenderComponent.comparator = comparator;
+    }
+    
+    public static final Comparator<Actor> orderComparator=(Actor o1, Actor o2) -> {
+        RenderComponent r1=(RenderComponent) o1.getComponent(RenderComponent.COMPONENT_NAME);
+        RenderComponent r2=(RenderComponent) o2.getComponent(RenderComponent.COMPONENT_NAME);
+        if(r1==null||r2==null)return 0;
+        
+        int diff=r1.getRenderOrder()-r2.getRenderOrder();
+        if(diff>0){
+            return 1;
+        }else if(diff<0)
+            return -1;
+        else return 0;
+    };
+    
+    
     public RenderComponent() {
         super(RenderComponent.COMPONENT_NAME);
+        renderOrder=0;
     }    
-    
+            
     protected int renderWidth,renderHeight;
+    private int renderOrder;
     
     protected void beforeRender(SceneCamera camera,IGraphicsTech tech){}
     /*
@@ -88,4 +128,13 @@ public class RenderComponent extends ActorComponent{
     public int getRenderHeight() {
         return renderHeight;
     }    
+
+    public int getRenderOrder() {
+        return renderOrder;
+    }
+
+    public void setRenderOrder(int renderOrder) {
+        this.renderOrder = renderOrder;
+    }
+    
 }

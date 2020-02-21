@@ -105,6 +105,9 @@ public class Debug {
             }catch(Exception ex){
                 Debug.log("debug log draw failed once.");
             }
+            
+            tech.drawText(0,tech.getFont().getFontHeight(),tech.getFont(), color,
+                    "FPS:"+tech.getFPS());
         }        
     }
 }

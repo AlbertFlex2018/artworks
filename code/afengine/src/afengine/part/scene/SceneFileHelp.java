@@ -45,8 +45,9 @@ public class SceneFileHelp{
                 Debug.log("put "+actor.getName());
                 scene.nodeActorMap.put(actor.getName(), actor);
             });
-        }
+        }        
         
+        scene.awakeAllActors();
         return scene;
     }
     //导入实体
@@ -59,7 +60,7 @@ public class SceneFileHelp{
             Iterator<Element> actoriter = actordata.elementIterator();
             while(actoriter.hasNext()){
                 Element actorelement = actoriter.next();
-                Actor actor = loadActorFromXML(actorelement);
+                Actor actor = loadActorFromXMLWithAwake(actorelement,false);
                 if(actor!=null){
                     actorMap.put(actor.getName(), actor);
                 }
@@ -187,7 +188,6 @@ public class SceneFileHelp{
             Actor actor = actorentry.getValue();
             makeParentMatch(null,actor,elementMap);
         }        
-        
     }
     private static void makeParentMatch(Actor parent,Actor child,Map<String,Element> elementMap){
         if(child==null)return;
@@ -226,10 +226,16 @@ public class SceneFileHelp{
         Iterator<Element> eleiter = staticactorroot.elementIterator();
         while(eleiter.hasNext()){
             Element ele = eleiter.next();
-            Actor actor = loadActorFromXML(ele);
+            Actor actor = loadActorFromXMLWithAwake(ele,false);
             if(actor!=null){
                 Actor.addStaticActor(actor);
             }
+            Map<String,Actor> actormap=Actor.staticActorMap;
+            Iterator<Actor> actoriter=actormap.values().iterator();
+            while(actoriter.hasNext()){
+                Actor a=actoriter.next();
+                a.awakeAllComponents();
+            }        
         }
     }
     
@@ -306,6 +312,9 @@ public class SceneFileHelp{
         </actorname>
     */
     public static Actor loadActorFromXML(Element root) {
+        return loadActorFromXMLWithAwake(root,true);
+    }
+    public static Actor loadActorFromXMLWithAwake(Element root,boolean awake){
         //先导入变换
         //再导入属性值,生成实体
         //最后加载组件的模块
@@ -319,8 +328,10 @@ public class SceneFileHelp{
             createActorModule(modspath,actor);
             actor.setModPath(modspath);
         }        
-        actor.awakeAllComponents();
-        return actor;
+        if(awake){
+            actor.awakeAllComponents();
+        }
+        return actor;        
     }
     //file#mod,file#mod
     private static void createActorModule(String paths,Actor actor){

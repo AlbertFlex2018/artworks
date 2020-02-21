@@ -9,8 +9,10 @@ import afengine.core.window.IColor;
 import afengine.core.window.IFont;
 import afengine.core.window.IGraphicsTech;
 import afengine.core.window.ITexture;
+import afengine.part.scene.Actor;
 import afengine.part.scene.ActorComponent;
 import afengine.part.scene.IComponentFactory;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import org.dom4j.Element;
@@ -31,23 +33,43 @@ public class RenderComponentFactory implements IComponentFactory{
     public static final Map<String,IRenderCreator> extraCreatorMap=new HashMap<>();
         
     /*
-        <Render type="" render-creator=""/>
+        <Render type="" render-creator="" order="0" useroderclass=""/>
         </Render>
     */
     @Override
-    public ActorComponent createComponent(Element element,Map<String,String> datas) {
+    public ActorComponent createComponent(Element element,Map<String,String> datas) {        
+        RenderComponent comp;
         switch(element.attributeValue("type")){
             case "Text":
-                return createText(element,datas);
+                comp= createText(element,datas);
+                break;
             case "Texture":
-                return createTexture(element,datas);
+                comp=createTexture(element,datas);
+                break;
             default:
-                return createExtra(element,datas);
+                comp=createExtra(element,datas);
+                break;                
         }
+        if(comp!=null){
+            String order=element.attributeValue("order");
+            if(order!=null){
+                int orderi=Integer.parseInt(ActorComponent.getRealValue(order,datas));
+                comp.setRenderOrder(orderi);
+            }
+        }
+        String userorderclass = element.attributeValue("userorderclass");
+        if (userorderclass != null) {
+            userorderclass = ActorComponent.getRealValue(userorderclass, datas);
+            Comparator<Actor> comparator = (Comparator) XMLEngineBoot.instanceObj(userorderclass);
+            if (comparator != null) {
+                RenderComponent.setComparator(comparator);
+            }
+        }
+        return comp;            
     }   
     
     /*
-        <Render type="" render-creator=""/>
+        <Render type="" render-creator="" order="0"/>
         </Render>
     */    
     private RenderComponent createExtra(Element element,Map<String,String> datas){

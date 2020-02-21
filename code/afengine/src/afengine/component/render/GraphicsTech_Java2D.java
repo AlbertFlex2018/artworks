@@ -1055,9 +1055,13 @@ public class GraphicsTech_Java2D implements IGraphicsTech{
         }
 
         @Override
-        public ITexture getCutInstance(int x, int y, int w, int h) {
+        public synchronized ITexture getCutInstance(int x, int y, int w, int h) {
             Java2DTexture texture = new Java2DTexture(this);                        
-            texture.img=this.img.getSubimage(x, y, w, h);
+            try{
+                texture.img=this.img.getSubimage(x, y, w, h);                            
+            }catch(Exception ex){  
+                Debug.log("exception:"+ex.getMessage());
+            }
             return texture;
         }    
     }    

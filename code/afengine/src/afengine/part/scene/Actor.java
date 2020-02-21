@@ -70,6 +70,12 @@ public class Actor implements IMessageHandler{
     private final Map<Long,Actor> childMap = new HashMap<>();
     private final Map<String, ActorComponent> componentsMap = new HashMap<>();
     
+    public Actor(){
+        this("actor");
+    }
+    public Actor(String name){
+        this(name,new Transform());
+    }
     public Actor(String name,Transform trans){
         this(IDCreator.createId(),name,trans);
     }
@@ -219,7 +225,7 @@ public class Actor implements IMessageHandler{
     
     //添加到直属孩子节点之中
     public final void addChild(Actor child) {
-        if(childMap.containsKey(id)){
+        if(childMap.containsKey(child.id)){
             return;
         }
 

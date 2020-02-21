@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene>
+    <actordata>
+        <root>
+            <transform pos="0,0,0,0" anchor="0,0,0,0" rotate="0,0,0,0" scale="1,1,1,1"/>
+        </root>      
+        <map>
+        <root>
+            <transform pos="0,0,0,0" anchor="0,0,0,0" rotate="0,0,0,0" scale="1,1,1,1"/>
+        </root>                  
+        </map>  
+        <map-content mod="test/testx/modlibs.xml#behavior-mod">            
+            <transform pos="0,0,0,0" anchor="0,0,0,0" rotate="0,0,0,0" scale="1,1,1,1"/>
+            <datas>
+                <behavior-class value="testx.Behavior1"/>
+            </datas>
+        </map-content>
+        <player mod="test/testx/modlibs.xml#imagemod">
+            <transform pos="30,30,0,0" anchor="0,0,0,0" rotate="0,0,0,0" scale="1,1,1,1"/>
+            <datas>
+                <imagepath value="test/testx/1.png"/>
+                <render-order value="-1"/>
+            </datas>
+        </player>
+    </actordata>
+    <actormap>
+        <root>
+            <map>
+                <map-content/>
+                <player/>                
+            </map>
+        </root>
+    </actormap>
+</scene>
