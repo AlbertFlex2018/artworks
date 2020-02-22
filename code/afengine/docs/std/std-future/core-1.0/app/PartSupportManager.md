@@ -41,6 +41,7 @@
 
 	initAllParts();						- 按优先级初始化所有的已添加的插件部分
 	updateAllParts(delttime);		    - 按优先级更新所有的已添加的插件部分
+	shutdownAllParts();					- 按优先级关闭所有的已添加的插件部分
 
 ## 6.相关其他类或者标准
 ### PartSupport
