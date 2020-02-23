@@ -31,7 +31,9 @@
 ## 5.本类需要实现的标准api说明
 
 	bool addPart(partsupport);			- 以默认的优先级加入管理器
-	bool addPart(partsupport,order);	- 以指定优先级加入管理器
+	bool addPart(partsupport,order);	- 以指定优先级加入管理器，设定为需要更新
+	bool addPart(partsupport,needupdate) - 以默认的优先级更新加入管理器，自己控制是否需要更新
+	bool addPart(partsupport,order,needupdate)	- 以指定的优先级和是否需要更新为准，加入管理器
 	bool hasPart(partname);				- 判断管理器内是否存在指定名称的插件部分
 	bool removePart(partname);			- 移除指定名称的插件部分(如果有)
 	partsupport getPart(partname);		- 获取指定名称的插件部分(如果有)
