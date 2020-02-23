@@ -188,8 +188,9 @@ public class Actor implements IMessageHandler{
         Iterator<Actor> childiter = children.iterator();
         while(childiter.hasNext()){
             Actor child = childiter.next();
-            if(child.findChild(id)!=null)
-                return child;
+            Actor dest=child.findChild(id);
+            if(dest!=null)
+                return dest;
         }
         
         return null;
@@ -214,9 +215,10 @@ public class Actor implements IMessageHandler{
         
         Iterator<Actor> childiter = children.iterator();
         while(childiter.hasNext()){
-            Actor child = childiter.next();            
-            if(child.findChild(name)!=null){
-                return child;
+            Actor child = childiter.next();  
+            Actor dest=child.findChild(name);
+            if(dest!=null){
+                return dest;
             }
         }                
         

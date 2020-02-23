@@ -9,7 +9,7 @@
  <tileset firstgid="513" name="世界 A2" tilewidth="32" tileheight="32">
   <image source="test/testx/A2.png" width="512" height="384"/>
  </tileset>
- <layer name="块层 1" width="40" height="24">
+ <layer name="块层1" width="40" height="24">
   <data>
    <tile gid="514"/>
    <tile gid="514"/>
@@ -973,7 +973,7 @@
    <tile gid="514"/>
   </data>
  </layer>
- <layer name="块层 2" width="40" height="24">
+ <layer name="块层2" width="40" height="24">
   <data>
    <tile gid="292"/>
    <tile gid="292"/>
@@ -1937,7 +1937,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="块层 3" width="40" height="24">
+ <layer name="块层3" width="40" height="24">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2901,7 +2901,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="块层 4" width="40" height="24" visible="0">
+ <layer name="块层4" width="40" height="24" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>

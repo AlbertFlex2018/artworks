@@ -1,6 +1,8 @@
 package testx;
 
 import afengine.core.IAppLogic;
+import afengine.core.util.Debug;
+import afengine.core.util.TextCenter.Text;
 import afengine.core.util.XMLEngineBoot;
 import afengine.part.message.IMessageHandler;
 import afengine.part.message.Message;
@@ -50,6 +52,7 @@ public class Test1Logic implements IAppLogic{
             if(actor==null){
                 Scene scene=SceneCenter.getInstance().getRunningScene();
                 actor=scene.findActorByName("player");
+                Debug.log_panel(new Text("name for find:"+actor.getName()));
             }                        
             
             KeyEvent key=(KeyEvent)msg.extraObjs[0];

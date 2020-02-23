@@ -35,7 +35,6 @@ public class SceneRenderComponentDraw implements IDrawStrategy{
         RenderComponent render=(RenderComponent) actor.getComponent(RenderComponent.COMPONENT_NAME);
         if(render!=null){
             render.renderComponent(camera, tech);
-            Debug.log("draw actor:"+actor.getName()+",order "+render.getRenderOrder());
         }                
         List<Actor> children=actor.getChildren();        
         children.sort(RenderComponent.getComparator());

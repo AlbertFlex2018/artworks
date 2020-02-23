@@ -5,6 +5,7 @@ import afengine.component.render.TextureRenderComponent;
 import afengine.core.AppState;
 import afengine.core.WindowApp;
 import afengine.core.util.Debug;
+import afengine.core.util.IDCreator;
 import afengine.core.util.XMLEngineBoot;
 import afengine.core.window.IGraphicsTech;
 import afengine.core.window.ITexture;
@@ -138,7 +139,6 @@ public class Behavior1 extends ActorBehavior{
         while(tileiter.hasNext()){            
             Element ele=tileiter.next();
             int gid=Integer.parseInt(ele.attributeValue("gid"));
-            Debug.log("title gid:"+gid);
             int px=x*tilewidth;
             int py=y*tileheight;
             
@@ -163,14 +163,12 @@ public class Behavior1 extends ActorBehavior{
 //            Debug.log("not found image by index:"+index);
             return null;
         }
-        Debug.log("x,y:"+x+","+y);
-        Actor actor=new Actor("tile"+index);
+        Actor actor=new Actor("tile"+index+"-"+IDCreator.createId());
         actor.getTransform().position.setX(x);
         actor.getTransform().position.setY(y);
         ITexture render=set.getByIndex(index);
         TextureRenderComponent r=new TextureRenderComponent(render);
         actor.addComponent(r, true);        
-        Debug.log("create actor at pos:["+actor.getAbsoluteX()+","+actor.getAbsoluteY()+"]");
         return actor;
     }
     
@@ -198,7 +196,6 @@ public class Behavior1 extends ActorBehavior{
                 ++count;
             }
         }
-        Debug.log("imageset: "+set.getStart()+","+set.getEnd());
         return set;
     }
     
