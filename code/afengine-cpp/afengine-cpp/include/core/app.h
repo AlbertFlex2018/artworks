@@ -2,10 +2,13 @@
 
 #include <string>
 #include <map>
+#include <list>
+
+using std::list;
 using std::string;
 using std::map;
 
-class IPartSupport;
+class AbPartSupport;
 class PartSupportManager;
 class IAppLogic;
 class App;
@@ -13,9 +16,12 @@ class App;
 //class implements App for console running.
 class ServiceApp;
 
-class IPartSupport {
+class AbPartSupport {
+private:
+	string _name;
 public:
-	virtual string getName() = 0;
+	AbPartSupport(string name) :_name(name) {}
+	string getName() { return _name; }
 	
 	virtual bool initPart()=0;
 	virtual bool updatePart(long time)=0;
@@ -24,17 +30,17 @@ public:
 
 class PartSupportManager {
 private:
-	map<string, IPartSupport*> partMap;
+	map<string, AbPartSupport*> partMap;
 	map<string, int>	      namePriorityMap;
-	map<int, IPartSupport*>  priorityMap;
+	map<int, AbPartSupport*>  needUpdateMap;
 public:
-	PartSupportManager() {}
+	PartSupportManager(){}
 	
-	bool addPart(IPartSupport* IPartSupport);
-	bool addPart(IPartSupport* IPartSupport, int order);
+	bool addPart(AbPartSupport* partsupport, int order);
+	bool addPart(AbPartSupport* partsupport, int order, bool needUpdate);
 	bool hasPart(string partname);
 	bool removePart(string partname);
-	IPartSupport* getPart(string partname);
+	AbPartSupport* getPart(string partname);
 
 	int getPartOrder(string partname);
 	bool changePartOrder(string partname, int newOrder);

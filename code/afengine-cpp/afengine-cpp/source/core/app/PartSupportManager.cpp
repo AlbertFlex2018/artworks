@@ -1,18 +1,5 @@
 #include "../../../include/core/app.h"
 
-bool PartSupportManager::addPart(IPartSupport* partsupport) {
-	if (partsupport == nullptr)return false;
-
-	int count=this->partMap.count(partsupport->getName());
-	if (count != 0) {
-		return false;
-	}
-
-	this->partMap.insert(
-		std::pair<string, IPartSupport*>(partsupport->getName(), partsupport));
-	return true;
-}
-
 bool PartSupportManager::hasPart(string partname) {
 	return this->partMap.count(partname) != 0;
 }
@@ -25,12 +12,16 @@ bool PartSupportManager::removePart(string partname) {
 	int order = this->namePriorityMap.at(partname);
 	this->partMap.erase(partname);
 	this->namePriorityMap.erase(partname);
-	this->priorityMap.erase(order);
+	this->needUpdateMap.erase(order);
 
 	return true;
 }
 
-bool PartSupportManager::addPart(IPartSupport* partsupport, int order) {
+bool PartSupportManager::addPart(AbPartSupport* partsupport, int order){
+	return addPart(partsupport, order, true);
+}
+bool PartSupportManager::addPart(AbPartSupport* partsupport, int order, bool needUpdate) {
+
 	if (partsupport == nullptr)return false;
 
 	int count = this->partMap.count(partsupport->getName());
@@ -39,15 +30,18 @@ bool PartSupportManager::addPart(IPartSupport* partsupport, int order) {
 	}
 
 	this->partMap.insert(
-		std::pair<string, IPartSupport*>(partsupport->getName(), partsupport));
+		std::pair<string, AbPartSupport*>(partsupport->getName(), partsupport));
 	this->namePriorityMap.insert(
 		std::pair<string, int>(partsupport->getName(), order));
-	this->priorityMap.insert(
-		std::pair<int, IPartSupport*>(order, partsupport));
+	if (needUpdate) {
+		this->needUpdateMap.insert(
+			std::pair<int, AbPartSupport*>(order, partsupport));
+	}
+
 	return true;
 }
 
-IPartSupport* PartSupportManager::getPart(string partname) {
+AbPartSupport* PartSupportManager::getPart(string partname) {
 
 	int count = this->partMap.count(partname);
 	if (count == 0)return nullptr;
@@ -67,44 +61,61 @@ bool PartSupportManager::changePartOrder(string partname, int newOrder) {
 	if (count == 0)return false;
 
 	int order = this->namePriorityMap.at(partname);
-	IPartSupport* part = this->partMap.at(partname);
+	AbPartSupport* part = this->partMap.at(partname);
 	this->namePriorityMap.erase(partname);
 	this->namePriorityMap.insert(
 		std::pair<string, int>(partname, newOrder));
-	this->priorityMap.erase(order);
-	this->priorityMap.insert(
-		std::pair<int, IPartSupport*>(newOrder, part));
+
+	int count2 = this->needUpdateMap.count(order);
+	if (count2 != 0) {
+		this->needUpdateMap.erase(order);
+		this->needUpdateMap.insert(
+			std::pair<int, AbPartSupport*>(newOrder, part));
+	}
+
 	return true;
 }
 
 bool PartSupportManager::initAllParts() {
-	map<int, IPartSupport*>::iterator iter;
-	for (iter = this->priorityMap.begin(); 
-		iter != this->priorityMap.end(); ++iter) {
-		if (iter->second->initPart() == false)
-			return false;
+	map<int, AbPartSupport*>::iterator iter;
+	bool result=true;
+	for (iter = this->needUpdateMap.begin(); 
+		iter != this->needUpdateMap.end(); ++iter) {
+		if (iter->second->initPart() == false) {
+			//do something
+			result = false;
+			continue;
+		}
 	}
 
-	return true;
+	return result;
 }
 
 bool PartSupportManager::updateAllParts(long deltime) {
-	map<int, IPartSupport*>::iterator iter;
-	for (iter = this->priorityMap.begin();
-		iter != this->priorityMap.end(); ++iter) {
-		if (iter->second->updatePart(deltime) == false)
-			return false;
+	map<int, AbPartSupport*>::iterator iter;
+	bool result = true;
+	for (iter = this->needUpdateMap.begin();
+		iter != this->needUpdateMap.end(); ++iter) {
+		if (iter->second->updatePart(deltime) == false) {
+			//do something
+			result = false;
+			continue;
+		}
 	}
 
-	return true;
+	return result;
 }
 bool PartSupportManager::shutdownAllParts() {
-	map<int, IPartSupport*>::reverse_iterator iter;
-	for (iter = this->priorityMap.rbegin();
-		iter != this->priorityMap.rend(); ++iter) {
-		if (iter->second->shutdownPart() == false)
-			return false;
+	map<int, AbPartSupport*>::iterator iter;
+	bool result = true;
+	for (iter = this->needUpdateMap.begin();
+		iter != this->needUpdateMap.end(); ++iter) {
+		if (iter->second->shutdownPart() == false) {
+			//do something
+			result = false;
+			continue;
+		}
 	}
 
-	return true;
+	return result;
 }

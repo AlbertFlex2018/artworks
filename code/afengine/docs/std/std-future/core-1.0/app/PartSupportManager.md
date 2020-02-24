@@ -20,9 +20,9 @@
 	PartSupport partA=new PartSupportA();
 	PartSupport partB=new PartSupportB();
 	PartSupport partC=new PartSupportB();
-	manager.addPart(partA);//以默认的优先级加入到管理器
+	manager.addPart(partA,1);//以1为优先级加入到管理器
 	manager.addPart(partB,10);//以10为优先级加入到管理器
-	manager.addPart(partC,3);//以3为优先级加入到管理器
+	manager.addPart(partC,3,false);//以3为优先级加入到管理器，并且指定无需更新该插件部分
 ```
 
 ### 生命周期
@@ -30,9 +30,7 @@
 
 ## 5.本类需要实现的标准api说明
 
-	bool addPart(partsupport);			- 以默认的优先级加入管理器
 	bool addPart(partsupport,order);	- 以指定优先级加入管理器，设定为需要更新
-	bool addPart(partsupport,needupdate) - 以默认的优先级更新加入管理器，自己控制是否需要更新
 	bool addPart(partsupport,order,needupdate)	- 以指定的优先级和是否需要更新为准，加入管理器
 	bool hasPart(partname);				- 判断管理器内是否存在指定名称的插件部分
 	bool removePart(partname);			- 移除指定名称的插件部分(如果有)
