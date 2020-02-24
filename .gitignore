@@ -10,3 +10,5 @@ hs_err_pid*
 /code/afengine/nbproject/private/
 /code/afengine/build/
 /code/afengine/dist/
+/code/afengine-cpp/.vs/
+/code/afengine-cpp/x64/Debug/
