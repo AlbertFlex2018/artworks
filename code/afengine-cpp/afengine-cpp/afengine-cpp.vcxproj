@@ -143,7 +143,7 @@
     <ClInclude Include="include\core\app.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\core\app\PartSupportManager.cpp" />
+    <ClCompile Include="source\core\app\app.cpp" />
     <ClCompile Include="source\test\test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
