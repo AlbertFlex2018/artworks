@@ -11,7 +11,7 @@ using std::map;
 class AbPartSupport;
 class PartSupportManager;
 class IAppLogic;
-class App;
+class AbApp;
 
 //class implements App for console running.
 class ServiceApp;
