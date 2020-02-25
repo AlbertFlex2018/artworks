@@ -1,10 +1,15 @@
 package albertgame.avg.action;
 
+import afengine.component.render.RenderComponent;
+import afengine.component.render.TextureRenderComponent;
 import afengine.core.AppState;
 import afengine.core.WindowApp;
 import afengine.core.util.Debug;
 import afengine.core.window.IGraphicsTech;
 import afengine.core.window.ITexture;
+import afengine.part.scene.Actor;
+import afengine.part.scene.Scene;
+import afengine.part.scene.SceneCenter;
 import albertgame.avg.AvgData;
 import albertgame.avg.story.IStoryAction;
 import java.util.HashMap;
@@ -12,7 +17,8 @@ import java.util.Map;
 
 public class BackAction implements IStoryAction{
     private final Map<String,ITexture> TextureMap;
-
+    
+    Actor back;
     public BackAction() {
         TextureMap=new HashMap<>();
     }
@@ -46,6 +52,13 @@ public class BackAction implements IStoryAction{
     
     //back show name
     private void show(AvgData data,String ... args){
+        if(back!=null){
+            Scene scene=SceneCenter.getInstance().getRunningScene();
+            back=scene.findActorByName("back");            
+        }
+        if(back==null)
+            return;
+
         String name=args[2];
         ITexture texture=TextureMap.get(name);
         if(texture==null){
@@ -53,5 +66,7 @@ public class BackAction implements IStoryAction{
             return;
         }
         data.setBack(texture);
+        TextureRenderComponent texturecomp=(TextureRenderComponent) back.getComponent(RenderComponent.COMPONENT_NAME);
+        texturecomp.setTexture(texture);
     }    
 }

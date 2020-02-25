@@ -5,18 +5,29 @@
  */
 package albertgame.avg.action;
 
+import afengine.part.scene.Actor;
+import afengine.part.scene.Scene;
+import afengine.part.scene.SceneCenter;
 import albertgame.avg.AvgData;
 import albertgame.avg.story.IStoryAction;
 
 public class PlayAction implements IStoryAction{
-
+    
+    Actor[] player=new Actor[3];
     /*
         player change pos statename
         player show pos playername statename
         player hide pos
-    */    
+    */  
+    boolean init=false;
     @Override
     public void action(AvgData data, String... args){
+        if(init==false){
+            Scene scene=SceneCenter.getInstance().getRunningScene();
+            player[0]=scene.findActorByName("player-left");
+            player[1]=scene.findActorByName("player-center");
+            player[2]=scene.findActorByName("player-right");
+        }
         int length=args.length;
         if(length<3)return;
         String cmd=args[1];

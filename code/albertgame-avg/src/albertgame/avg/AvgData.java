@@ -7,8 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AvgData {    
-    
-    
+        
     private static AvgData data;
 
     public static AvgData getInstance(){
@@ -16,7 +15,6 @@ public class AvgData {
             data=new AvgData();
         return data;
     }
-    
     
     //backaction,bgmaction,playeraction,wordaction
     private final Map<String,IStoryAction> actionMap;

@@ -37,7 +37,13 @@
                 <Scene name="Main" path="test/scenetest2/test2-scene.xml"/>
             </SceneList>
         </ScenePart>
-        <UIInputPart/>
-        <SoundPart bgm="test/scenetest2/midi1.mid"/>
+        <UIInputPart>
+            <InputServlets>
+                <before>
+                    <input1 handler="scenetest2.SceneTest2Logic$CmdHandler" type="1"/>
+                </before>
+            </InputServlets>
+        </UIInputPart>
+        <SoundPart/>
     </partsconfig>
 </app>
