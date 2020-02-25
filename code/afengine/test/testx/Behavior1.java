@@ -122,6 +122,34 @@ public class Behavior1 extends ActorBehavior{
         return set;
     }
     
+    //<image source="" width="" height=""/>
+    public TileImageSet loadImageSet(Element image,int startindex,int tilewidth,int tileheight){
+        IGraphicsTech tech=((WindowApp)(AppState.getRunningApp())).getGraphicsTech();
+        String source=image.attributeValue("source");                
+        ITexture texture=tech.createTexture(source);
+        if(texture==null){
+            Debug.log("texture path not correct!");
+            return null;
+        }
+        int imagewidth=Integer.parseInt(image.attributeValue("width"));
+        int imageheight=Integer.parseInt(image.attributeValue("height"));
+        int ix=imagewidth/tilewidth;
+        int iy=imageheight/tileheight;
+        int end=ix*iy;
+        TileImageSet set=new TileImageSet(startindex,startindex+end,tilewidth,tileheight);
+        int count=0;
+        for(int j=0;j!=iy;++j){
+            for(int i=0;i!=ix;++i){
+                ITexture te=texture.getCutInstance(i*tilewidth,j*tileheight,
+                        tilewidth,tileheight);
+                set.setByIndex(startindex+count,te);
+                ++count;
+            }
+        }
+        return set;
+    }
+    
+    
     /*
         <layer name="" width="" height="">
             <data>
@@ -171,34 +199,6 @@ public class Behavior1 extends ActorBehavior{
         actor.addComponent(r, true);        
         return actor;
     }
-    
-    //<image source="" width="" height=""/>
-    public TileImageSet loadImageSet(Element image,int startindex,int tilewidth,int tileheight){
-        IGraphicsTech tech=((WindowApp)(AppState.getRunningApp())).getGraphicsTech();
-        String source=image.attributeValue("source");                
-        ITexture texture=tech.createTexture(source);
-        if(texture==null){
-            Debug.log("texture path not correct!");
-            return null;
-        }
-        int imagewidth=Integer.parseInt(image.attributeValue("width"));
-        int imageheight=Integer.parseInt(image.attributeValue("height"));
-        int ix=imagewidth/tilewidth;
-        int iy=imageheight/tileheight;
-        int end=ix*iy;
-        TileImageSet set=new TileImageSet(startindex,startindex+end,tilewidth,tileheight);
-        int count=0;
-        for(int j=0;j!=iy;++j){
-            for(int i=0;i!=ix;++i){
-                ITexture te=texture.getCutInstance(i*tilewidth,j*tileheight,
-                        tilewidth,tileheight);
-                set.setByIndex(startindex+count,te);
-                ++count;
-            }
-        }
-        return set;
-    }
-    
     
     @Override
     public void toWake(){

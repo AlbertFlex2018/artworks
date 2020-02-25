@@ -9,10 +9,10 @@
             <transform pos="0,0,0,0" anchor="0,0,0,0" rotate="0,0,0,0" scale="1,1,1,1"/>
         </root>                  
         </map>  
-        <map-content mod="test/testx/modlibs.xml#behavior-mod">            
+        <map-content mod="test/testx/modlibs.xml#mapmod">            
             <transform pos="0,0,0,0" anchor="0,0,0,0" rotate="0,0,0,0" scale="1,1,1,1"/>
             <datas>
-                <behavior-class value="testx.Behavior1"/>
+                <mapfile value="test/testx/map.tmx"/>
             </datas>
         </map-content>
         <player mod="test/testx/modlibs.xml#imagemod">

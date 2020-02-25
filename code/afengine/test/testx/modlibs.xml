@@ -10,4 +10,9 @@
             <texture>#imagepath</texture>
         </Render>
     </imagemod>
+    <mapmod>
+        <Render type="TileMap" render-creator="testx.TileMapRenderComponent$TileMapRenderCreator">
+            <mapfile path="#mapfile"/>
+        </Render>
+    </mapmod>
 </modlibs>
