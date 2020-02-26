@@ -18,11 +18,11 @@ public class AvgData {
     
     //backaction,bgmaction,playeraction,wordaction
     private final Map<String,IStoryAction> actionMap;
-    
+        
     //stage-name,story-name,action-index    
     //display-left,display-center,display-right
-    //left-name,left-state,center-name,center-state,right-name,right-state
-    //word,word-line1,word-line2,word-line3,word-line4,word-new
+    //left-name,left-state,center-name,center-state,right-name,right-state :name
+    //word,word-line1,word-line2,word-line3,word-line4,word-new 
     //midi-path    
     private final Map<String,String> dataMap;
     

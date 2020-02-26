@@ -5,14 +5,11 @@
  */
 package albertgame.avg;
 
-/**
- *
- * @author Admin
- */
+
 public class AvgConfigUtil{
     /*
         <avg-config>
-            <stage-config>
+            <stages-config>
                 <stages>                    
                     <stage path=""/>
                     <stage path=""/>

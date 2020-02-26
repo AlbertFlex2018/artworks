@@ -15,16 +15,19 @@ public class BgmAction implements IStoryAction{
     public void action(AvgData data, String... args) {
         if(args[0].equals("bgm"))return;
         
-        if(args.length==4){
-            if(args[1].equals("prepare")){
-                prepare(args);
-            }
-        }else if(args.length==3){
-            if(args[1].equals("play")){
-                play(data,args);
-            }
-        }                
-        else Debug.log("not a bgm action!");
+        switch (args.length) {
+            case 4:
+                if(args[1].equals("prepare")){
+                    prepare(args);
+                }   break;
+            case 3:
+                if(args[1].equals("play")){
+                    play(data,args);
+                }   break;
+            default:
+                Debug.log("not a bgm action!");
+                break;
+        }
     }
     
     //bgm prepare name path
