@@ -15,11 +15,15 @@
                 <mapfile value="test/testx/map.tmx"/>
             </datas>
         </map-content>
-        <player mod="test/testx/modlibs.xml#imagemod">
-            <transform pos="30,30,0,0" anchor="0,0,0,0" rotate="0,0,0,0" scale="1,1,1,1"/>
+        <player mod="test/testx/modlibs.xml#cutimagemod">
+            <transform pos="32,256,0,0" anchor="0,0,0,0" rotate="0,0,0,0" scale="1,1,1,1"/>
             <datas>
                 <imagepath value="test/testx/1.png"/>
                 <render-order value="-1"/>
+                <cutx value="0"/>
+                <cuty value="0"/>
+                <cutwidth value="32"/>
+                <cutheight value="32"/>
             </datas>
         </player>
     </actordata>
@@ -27,8 +31,8 @@
         <root>
             <map>
                 <map-content/>
-                <player/>                
             </map>
+            <player/>                
         </root>
     </actormap>
 </scene>

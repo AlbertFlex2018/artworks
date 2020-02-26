@@ -44,7 +44,7 @@ public class UIInputRoute implements IMessageRoute{
             }
         }
         
-        Map<Long,List<InputServlet>> afterServlets=center.getPreServlets();
+        Map<Long,List<InputServlet>> afterServlets=center.getAfterServlets();
         slist=afterServlets.get(msg.msgType);
         if(slist!=null){
             for(InputServlet ser:slist){

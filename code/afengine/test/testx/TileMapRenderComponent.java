@@ -135,6 +135,7 @@ public class TileMapRenderComponent extends RenderComponent{
         */
         @Override
         public RenderComponent create(Element element, Map<String, String> datas){
+            Debug.log("render creator - tilemap");
           Element mapfile=element.element("mapfile");
           String path=ActorComponent.getRealValue(mapfile.attributeValue("path"),datas);
           Document doc=XMLEngineBoot.readXMLFileDocument(path);
@@ -160,6 +161,8 @@ public class TileMapRenderComponent extends RenderComponent{
             }
             
             TileMapRenderComponent render=new TileMapRenderComponent();
+            List<TileImageSet> set=render.getImgsetlist();
+            set.addAll(setlist);
             loadTileIdMap(render.tileIdMap,setlist,root,tilewidth,tileheight);
             
             return render;
@@ -212,6 +215,7 @@ public class TileMapRenderComponent extends RenderComponent{
                     ITexture te=texture.getCutInstance(i*tilewidth,j*tileheight,
                             tilewidth,tileheight);
                     set.setByIndex(startindex+count,te);
+                    Debug.log("load gid:"+(count+startindex));
                     ++count;
                 }
             }
@@ -237,7 +241,7 @@ public class TileMapRenderComponent extends RenderComponent{
             Element data=element.element("data");
             int width=Integer.parseInt(element.attributeValue("width"));
             int height=Integer.parseInt(element.attributeValue("height"));
-            int[][] map=new int[width][height];
+            int[][] map=new int[height][width];
             //第0行，第1列
             int x=0,y=0;
             Iterator<Element> tileiter=data.elementIterator();
@@ -249,12 +253,13 @@ public class TileMapRenderComponent extends RenderComponent{
                 TileImageSet set=getImageSet(setlist,gid);
                 if(set!=null){
                     map[x][y]=gid;
+                    Debug.log("set gid:["+x+","+y+"]"+gid);
                 }
                 
-                ++x;
-                if(x>=width){                
-                    x%=width;
-                    ++y;
+                ++y;
+                if(y>=width){                
+                    y%=width;
+                    ++x;
                 }                        
             }
             return map;

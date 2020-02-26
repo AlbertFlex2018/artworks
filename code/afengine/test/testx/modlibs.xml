@@ -5,6 +5,12 @@
             <Behavior1 class="#behavior-class"/>
         </BehaviorBean>
     </behavior-mod>
+    <cutimagemod>
+        <Render type="Texture">
+            <texture>#imagepath</texture>
+            <cutsize x="#cutx" y="#cuty" width="#cutwidth" height="#cutheight"/>
+        </Render>        
+    </cutimagemod>
     <imagemod>
         <Render type="Texture" order="#render-order">
             <texture>#imagepath</texture>
