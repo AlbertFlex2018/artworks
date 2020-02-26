@@ -5,14 +5,16 @@
  */
 package albertgame.avg.action;
 
+import afengine.component.render.RenderComponent;
+import afengine.component.render.TextureRenderComponent;
 import afengine.part.scene.Actor;
 import afengine.part.scene.Scene;
 import afengine.part.scene.SceneCenter;
 import albertgame.avg.AvgData;
 import albertgame.avg.story.IStoryAction;
+import albertgame.avg.story.Player;
 
-public class PlayAction implements IStoryAction{
-    
+public class PlayerAction implements IStoryAction{
     Actor[] player=new Actor[3];
     /*
         player change pos statename
@@ -47,21 +49,11 @@ public class PlayAction implements IStoryAction{
     }   
     //player change pos statename
     private void change(AvgData data,String ... args){
-        String pos=args[2];
-        String statename=args[3];
-        data.getDataMap().replace(pos+"-state",statename);
     }
     //player show pos playername statename
     private void show(AvgData data,String ... args){
-        String pos=args[2];
-        String playername=args[3];
-        String statename=args[4];
-        data.getDataMap().replace(pos+"-name",playername);
-        data.getDataMap().replace(pos+"-state",statename);
     }    
     //player hide pos
     private void hide(AvgData data,String ... args){
-        String pos = args[2];
-        data.getDataMap().replace("display-"+pos,"false");
     }    
 }

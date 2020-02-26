@@ -39,34 +39,10 @@ public class BackAction implements IStoryAction{
     } 
     //back prepare name path
     private void prepare(String ... args){
-        String name=args[2];
-        String path=args[3];
-        IGraphicsTech tech=((WindowApp)AppState.getRunningApp()).getGraphicsTech();
-        ITexture texture=tech.createTexture(path);
-        if(texture==null){
-            Debug.log("texture prepare failed!");
-            return;
-        }
-        TextureMap.put(name, texture);
+
     }
     
     //back show name
     private void show(AvgData data,String ... args){
-        if(back!=null){
-            Scene scene=SceneCenter.getInstance().getRunningScene();
-            back=scene.findActorByName("back");            
-        }
-        if(back==null)
-            return;
-
-        String name=args[2];
-        ITexture texture=TextureMap.get(name);
-        if(texture==null){
-            Debug.log("texture show failed,not prepared..");
-            return;
-        }
-        data.setBack(texture);
-        TextureRenderComponent texturecomp=(TextureRenderComponent) back.getComponent(RenderComponent.COMPONENT_NAME);
-        texturecomp.setTexture(texture);
     }    
 }

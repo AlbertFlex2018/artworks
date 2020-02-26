@@ -29,9 +29,7 @@ public class AvgData {
     //stage - story - action
     //load stage to this map for stage    
     private final Map<String,AvgStage> stageMap;    
-    
-    private ITexture back;
-        
+            
     private AvgData(){
         actionMap=new HashMap<>();
         dataMap=new HashMap<>();
@@ -75,12 +73,4 @@ public class AvgData {
     public Map<String, AvgStage> getStageMap() {
         return stageMap;
     }                
-
-    public ITexture getBack() {
-        return back;
-    }
-
-    public void setBack(ITexture back) {
-        this.back = back;
-    }    
 }
