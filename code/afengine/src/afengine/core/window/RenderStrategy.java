@@ -5,7 +5,6 @@
  */
 package afengine.core.window;
 
-import afengine.core.util.Debug;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
