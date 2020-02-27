@@ -16,9 +16,6 @@ public class AvgData {
         return data;
     }
     
-    //backaction,bgmaction,playeraction,wordaction
-    private final Map<String,IStoryAction> actionMap;
-        
     //stage-name,story-name,action-index    
     //display-left,display-center,display-right
     //left-name,left-state,center-name,center-state,right-name,right-state :name
@@ -31,23 +28,22 @@ public class AvgData {
     private final Map<String,AvgStage> stageMap;    
             
     private AvgData(){
-        actionMap=new HashMap<>();
         dataMap=new HashMap<>();
+        dataMap.put("back-path","");//背景图片路径
+        dataMap.put("stage-name","");//当前舞台名称
+        dataMap.put("story-name","");//当前故事名称
+        dataMap.put("action-index","");//当前动作索引
 
-        dataMap.put("stage-name","");
-        dataMap.put("story-name","");
-        dataMap.put("action-index","");
+        dataMap.put("display-left","false");//是否显示左边立绘图        
+        dataMap.put("display-center","false");//是否显示中间立绘图
+        dataMap.put("display-right","false");//是否显示右边立绘图
 
-        dataMap.put("display-left","false");        
-        dataMap.put("display-center","false");
-        dataMap.put("display-right","false");
+        dataMap.put("left-name","");//左边人物名称
+        dataMap.put("center-name","");//中间
+        dataMap.put("right-name","");//右边
 
-        dataMap.put("left-name","");
-        dataMap.put("center-name","");
-        dataMap.put("right-name","");
-
-        dataMap.put("left-state","");
-        dataMap.put("center-state","");
+        dataMap.put("left-state","");//左边人物的状态
+        dataMap.put("center-state","");//中间
         dataMap.put("right-state","");
 
         dataMap.put("word","");
@@ -55,15 +51,10 @@ public class AvgData {
         dataMap.put("word-line2","");
         dataMap.put("word-line3","");
         dataMap.put("word-line4","");        
-        dataMap.put("word-new","false");
 
-        dataMap.put("midipath","");
+        dataMap.put("midi-path","");//背景音乐路径
 
         stageMap=new HashMap<>();
-    }
-
-    public Map<String, IStoryAction> getActionMap() {
-        return actionMap;
     }
 
     public Map<String, String> getDataMap() {

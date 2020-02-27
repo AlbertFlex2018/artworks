@@ -5,12 +5,11 @@
  */
 package albertgame.avg.action;
 
-import afengine.component.render.RenderComponent;
-import afengine.component.render.TextureRenderComponent;
 import afengine.part.scene.Actor;
 import afengine.part.scene.Scene;
 import afengine.part.scene.SceneCenter;
 import albertgame.avg.AvgData;
+import albertgame.avg.story.AvgStage;
 import albertgame.avg.story.IStoryAction;
 import albertgame.avg.story.Player;
 
@@ -49,6 +48,13 @@ public class PlayerAction implements IStoryAction{
     }   
     //player change pos statename
     private void change(AvgData data,String ... args){
+        String pos=args[2];
+        String statename=args[2];
+        AvgStage stage=data.getStageMap().get(data.getDataMap().get("stage-name"));
+        Player player=stage.getPlayerByName(data.getDataMap().get("player-"+pos));
+        if(player!=null){
+            
+        }
     }
     //player show pos playername statename
     private void show(AvgData data,String ... args){

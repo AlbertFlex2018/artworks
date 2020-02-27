@@ -32,8 +32,22 @@ public class BgmAction implements IStoryAction{
     
     //bgm prepare name path
     private void prepare(String ... args){
+        String name=args[2];
+        String path=args[3];
+        long id=SoundCenter.getInstance().addMidi(path);
+        midiMap.put(name, id);
+        midiPathMap.put(name,path);
     }
     //bgm play name
     private void play(AvgData data,String ... args){
+        String name=args[2];
+        if(midiMap.get(name)==null){
+            Debug.log("bgm is not correct.");
+        }else{
+            long id=midiMap.get(name);
+            String path=midiPathMap.get(name);
+            SoundCenter.getInstance().playMidi(id, true);
+            data.getDataMap().replace("bgm-path",path);
+        }
     }        
 }
