@@ -16,7 +16,7 @@
 	
 	manager.attachProcess(process);//将进程实例填入管理器
 
-	Process get=manager.fetch(process.getId());//从管理器中获取指定id的进程
+	Process get=manager.fetchProcess(process.getId());//从管理器中获取指定id的进程
 
 	//操作process
 ```
