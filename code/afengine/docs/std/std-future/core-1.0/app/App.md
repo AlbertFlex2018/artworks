@@ -37,13 +37,13 @@
 
 	PartSupportManager getPartSupportManager() - 获取游戏应用插件部分管理器，在游戏应用的实例创建时自动创建
 	MessageManager 	   getMessageManager()	- 获取游戏应用的消息管理器，在游戏应哟个的实例创建时自动创建
-	void   run(logic)			- 以logic作为游戏逻辑，并且做好运行准备
+	void   init(logic)	- 以logic作为游戏逻辑，并且做好运行准备
 	void   update(delttime)		- 更新应用所需要进行的流程，使用此方法，内部会调用逻辑，插件部分管理器，更新消息管理器，和具体应用的更新方法
 	void   end()				- 结束应用应当进行的流程，
 	void   exitAppUpdate()		- 退出游戏循环
 
 
-	bool   initApp()			- 私有或者保护方法，由run(logic)调用，初始化游戏应用，[需由实现类实现]
+	bool   initApp()			- 私有或者保护方法，由init(logic)调用，初始化游戏应用，[需由实现类实现]
 	bool   updateApp(delttime)  - 私有或者保护方法，由update调用，更新游戏应用，[需由实现类实现]
 	bool   shutdownApp()		- 私有或者保护方法，由end调用，关闭游戏应用，[需由实现类实现]	
 
