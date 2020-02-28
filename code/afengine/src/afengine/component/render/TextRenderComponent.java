@@ -85,4 +85,10 @@ public class TextRenderComponent extends RenderComponent{
         super.renderWidth=font.getFontWidth(text.value);
         super.renderHeight=font.getFontHeight();       
     }
+
+    public Text getText() {
+        return text;
+    }
+    
+    
 }

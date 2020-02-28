@@ -34,9 +34,11 @@ public class TextureRenderComponent extends RenderComponent{
     @Override
     public void render(SceneCamera camera,IGraphicsTech tech){
         if(texture==null)return;
-        
+        try{
         super.renderWidth=texture.getWidth();
         super.renderHeight=texture.getHeight();
+        }catch(Exception ex){}
+        
         double ax = super.getRenderX(camera);
         double ay = super.getRenderY(camera);
         Vector r = this.getActor().getTransform().rotation;
