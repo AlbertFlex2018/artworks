@@ -1,4 +1,4 @@
-package albertgame.avg.messgae;
+package albertgame.avg.message;
 
 import afengine.core.util.Debug;
 import afengine.core.util.IDCreator;
@@ -40,7 +40,7 @@ public class ActionMessageRoute implements IMessageRoute{
         IStoryAction act=actionMap.get(cmds[0]);
         if(act!=null){
             act.action(AvgData.getInstance(), cmds);
-            Debug.log("action - "+cmds.toString());
+            Debug.log("action:"+action);
         }
     }
 }

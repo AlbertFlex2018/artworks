@@ -10,10 +10,11 @@ import java.util.Map;
 public class BgmAction implements IStoryAction{
     private final Map<String,Long> midiMap=new HashMap<>();
     private final Map<String,String> midiPathMap=new HashMap<>();
+    long prefMidi;
+    long nowMidi;
 
     @Override
     public void action(AvgData data, String... args) {
-        if(args[0].equals("bgm"))return;
         
         switch (args.length) {
             case 4:
@@ -46,6 +47,8 @@ public class BgmAction implements IStoryAction{
         }else{
             long id=midiMap.get(name);
             String path=midiPathMap.get(name);
+            prefMidi=nowMidi;
+            nowMidi=id;
             SoundCenter.getInstance().playMidi(id, true);
             data.getDataMap().replace("bgm-path",path);
         }

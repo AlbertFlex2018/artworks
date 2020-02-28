@@ -5,6 +5,8 @@
  */
 package albertgame.avg;
 
+import org.dom4j.Element;
+
 
 public class AvgConfigUtil{
     /*
@@ -29,5 +31,8 @@ public class AvgConfigUtil{
             </datas>
         </avg-config>
     */
-    
+    public void loadConfigs(Element root){
+        Element stagesconfig=root.element("statges-config");
+        Element data=root.element("datas");
+    }
 }

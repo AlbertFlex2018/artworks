@@ -15,7 +15,12 @@ public class LinkAction implements IStoryAction{
     //link stage-story stagename storyname
     @Override
     public void action(AvgData data, String... args){
-        
+        String cmd=args[1];
+        if(cmd.equals("story")){
+            linkStory(data,args);
+        }else if(cmd.equals("stage-story")){
+            linkStage(data,args);
+        }
     }
     public void linkStage(AvgData data,String ... args){
         String stagename=args[2];
@@ -28,6 +33,11 @@ public class LinkAction implements IStoryAction{
         data.getDataMap().replace("display-right","false");
     }
     public void linkStory(AvgData data,String ... args){
-        
+        String storyname=args[3];
+        data.getDataMap().replace("story-name",storyname);
+        data.getDataMap().replace("action-index","0");
+        data.getDataMap().replace("display-left","false");
+        data.getDataMap().replace("display-center","false");
+        data.getDataMap().replace("display-right","false");        
     }
 }

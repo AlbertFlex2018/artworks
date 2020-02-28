@@ -37,7 +37,7 @@ public class AvgData {
         dataMap.put("display-left","false");//是否显示左边立绘图        
         dataMap.put("display-center","false");//是否显示中间立绘图
         dataMap.put("display-right","false");//是否显示右边立绘图
-
+        
         dataMap.put("left-name","");//左边人物名称
         dataMap.put("center-name","");//中间
         dataMap.put("right-name","");//右边
