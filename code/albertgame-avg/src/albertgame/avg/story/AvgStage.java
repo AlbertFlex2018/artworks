@@ -16,7 +16,7 @@ public class AvgStage {
     private final String name;
     private final Map<String,Story> storyMap;
     private final Map<String,Player> playerMap;
-
+    private String path;
     public AvgStage(String name,Map<String, Story> storyMap, Map<String, Player> playerMap) {
         this.storyMap = storyMap;
         this.playerMap = playerMap;
@@ -44,5 +44,14 @@ public class AvgStage {
     public String getName() {
         return name;
     }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+    
     
 }
