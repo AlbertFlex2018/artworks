@@ -64,6 +64,7 @@ public class AvgConfigUtil{
         }
     }
     public void loadOutConfig(Element element){
+        element.clearContent();
         element.setName("avg-config");
         AvgData data = AvgData.getInstance();
         Element stageconfigs=element.addElement("stages-config");
