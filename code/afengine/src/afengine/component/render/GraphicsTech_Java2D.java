@@ -25,6 +25,7 @@ import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.List;
 import java.awt.Point;
@@ -46,6 +47,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.RepaintManager;
@@ -979,7 +981,7 @@ public class GraphicsTech_Java2D implements IGraphicsTech{
     }
 
     private class Java2DTexture implements ITexture{
-        private BufferedImage img;
+        private Image img;
         private final String texturepath;
         private final boolean isURL;
         private final URL url;
@@ -1007,19 +1009,11 @@ public class GraphicsTech_Java2D implements IGraphicsTech{
         {
             if(isURL)
             {
-                try {
-                    img=ImageIO.read(this.url);
-                    System.out.println(url);
-                } catch (IOException ex) {
-                    java.util.logging.Logger.getLogger(GraphicsTech_Java2D.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-                }
+                img=new ImageIcon(url).getImage();
+                System.out.println(url);
             }
             else{                
-                try {
-                    img = ImageIO.read(new File(this.texturepath));
-                } catch (IOException ex) {
-                    Debug.log("image not found."+texturepath);
-                }
+                img = new ImageIcon(texturepath).getImage();
             }                
         }
         @Override
@@ -1037,7 +1031,7 @@ public class GraphicsTech_Java2D implements IGraphicsTech{
             return img.getHeight(null);
         }
 
-        public BufferedImage getBufferedImage() {
+        public Image getBufferedImage() {
             return img;
         }
 
@@ -1058,7 +1052,13 @@ public class GraphicsTech_Java2D implements IGraphicsTech{
         public synchronized ITexture getCutInstance(int x, int y, int w, int h) {
             Java2DTexture texture = new Java2DTexture(this);                        
             try{
-                texture.img=this.img.getSubimage(x, y, w, h);                            
+            BufferedImage bi = new BufferedImage((int)(img.getWidth(null)),(int)(img.getHeight(null)),BufferedImage.TYPE_INT_ARGB);
+
+            Graphics2D grph = (Graphics2D) bi.getGraphics();
+            grph.drawImage(img, x, y, w, h, null);
+            grph.dispose();            
+            texture.img=bi;
+                
             }catch(Exception ex){  
                 Debug.log("exception:"+ex.getMessage());
             }
