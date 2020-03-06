@@ -75,7 +75,7 @@ public class RenderTestLogic1 implements IAppLogic{
     @Override
     public boolean update(long time) {
         initText.value="init..."+(++count);
-        if(count==1000){
+        if(count==10000){
             AppState.setValue("run","false");
         }
         return true;

@@ -46,7 +46,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import javax.imageio.ImageIO;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -83,6 +85,14 @@ public class GraphicsTech_Java2D implements IGraphicsTech{
     private int renderFPS;
     private Map<String,Object[]> valueMap;
     
+    int count;
+    Runnable runnable = () -> {
+        // task to run goes here
+        renderFPS=count;
+        count=0;
+    }; //创建 run 方法
+    ScheduledExecutorService service = Executors
+        .newSingleThreadScheduledExecutor();
     private boolean create;
     public GraphicsTech_Java2D()
     {
@@ -98,7 +108,8 @@ public class GraphicsTech_Java2D implements IGraphicsTech{
         isRendering=false;
         renderFPS=0;       
         create=true;
-        valueMap=new HashMap<>();        
+        valueMap=new HashMap<>();  
+        service.scheduleAtFixedRate(runnable, 1, 1, TimeUnit.SECONDS);    
     }
     
     @Override
@@ -302,9 +313,6 @@ public class GraphicsTech_Java2D implements IGraphicsTech{
         graphics.clearRect(0, 0, width, height);
     }
 
-    private long lasttime;
-    private long totaltime;
-    private int count;
     @Override
     public void endDraw(){
         isRendering=false;
@@ -316,19 +324,8 @@ public class GraphicsTech_Java2D implements IGraphicsTech{
         if(!buffer.contentsLost())
             buffer.show();
                 
-        Toolkit.getDefaultToolkit().sync();        
-        
-        long nowtime = System.currentTimeMillis();
-        long delttime = nowtime-lasttime;
-        lasttime=nowtime;
-        totaltime+=delttime;
-        ++count;
-        if(totaltime>1000)
-        {
-            totaltime=0;
-            renderFPS=count;
-            count=0;
-        }       
+        Toolkit.getDefaultToolkit().sync();                
+        ++count;   
     }
 
     @Override
@@ -1052,10 +1049,10 @@ public class GraphicsTech_Java2D implements IGraphicsTech{
         public synchronized ITexture getCutInstance(int x, int y, int w, int h) {
             Java2DTexture texture = new Java2DTexture(this);                        
             try{
-            BufferedImage bi = new BufferedImage((int)(img.getWidth(null)),(int)(img.getHeight(null)),BufferedImage.TYPE_INT_ARGB);
+            BufferedImage bi = new BufferedImage(w,h,BufferedImage.TYPE_INT_ARGB);
 
             Graphics2D grph = (Graphics2D) bi.getGraphics();
-            grph.drawImage(img, x, y, w, h, null);
+            grph.drawImage(img, 0,0,w,h, x,y,x+w, y+h, null);
             grph.dispose();            
             texture.img=bi;
                 
