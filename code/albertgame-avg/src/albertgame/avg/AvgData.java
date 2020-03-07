@@ -1,8 +1,6 @@
 package albertgame.avg;
 
-import afengine.core.window.ITexture;
 import albertgame.avg.story.AvgStage;
-import albertgame.avg.story.IStoryAction;
 import java.util.HashMap;
 import java.util.Map;
 
