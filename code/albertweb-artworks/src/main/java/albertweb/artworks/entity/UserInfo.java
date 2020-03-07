@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+
 @NamedQuery(name="entity.userinfo.selectall",
             query="SELECT e FROM UserInfo e ")
 @XmlRootElement(name = "UserInfo")
