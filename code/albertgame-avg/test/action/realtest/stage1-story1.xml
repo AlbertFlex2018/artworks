@@ -6,5 +6,10 @@
     <action>back show test/action/test/1.png</action>
     <action>back show test/action/test/back.jpg</action>
     <action>player show left player1 state1</action>
+    <action>word 很久很久以前，有一个小朋友，叫做阮博文。</action>
+    <action>word 他不喜欢写作业，不喜欢做俯卧撑，一天到晚就只会玩游戏。</action>
+    <action>word 终于有一天，他觉醒了奇怪的东西……</action>
+    <action>word 那就是——</action>
+    <action>word 绅士！！！！！</action>
     <action>link story story2</action>
 </story>

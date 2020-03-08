@@ -42,6 +42,7 @@
             <InputServlets>
                 <before>
                     <handelr1 handler="action.realtest.KeyHandler" types="1"/>
+                    <eschandelr1 handler="afengine.part.uiinput.InputServlet$ExitHandler" types="1"/>
                 </before>
             </InputServlets>
         </UIInputPart>

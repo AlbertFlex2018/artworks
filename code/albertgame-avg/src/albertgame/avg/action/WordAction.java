@@ -23,8 +23,11 @@ public class WordAction implements IStoryAction{
             Debug.log("action failed:word text");
             return;
         }
-        data.getDataMap().replace("word",args[1]);        
-        act(data,args[1]);
+        data.getDataMap().replace("word",args[1]);   
+        if(args[1].equals("blank")){
+            act(data,"");
+        }
+        else act(data,args[1]);
     }
     private void act(AvgData data,String word){
         String[] words=new String[4];
@@ -32,18 +35,22 @@ public class WordAction implements IStoryAction{
         if(size==0){
             words[0]=word;
         }
-        if(1<=size){
-            words[0]=word.substring(0,15);
+        if(size==1){
+            words[0]=word.substring(0,16);
+            words[1]=word.substring(16,word.length());
         }
-        if(2<=size){
-            words[1]=word.substring(16,31);
+        else if(size==2){
+            words[0]=word.substring(0,16);
+            words[1]=word.substring(16,32);
+            words[2]=word.substring(32,word.length());
         }
-        if(3<=size){
-            words[2]=word.substring(32,47);
-        }
-        if(4<=size){
-            words[3]=word.substring(48,65);
-        }
+        else if(size==3){
+            words[0]=word.substring(0,16);
+            words[1]=word.substring(16,32);
+            words[2]=word.substring(32,48);
+            words[3]=word.substring(48,word.length());
+        };
+
         if(word!=null){
             Scene scene=SceneCenter.getInstance().getRunningScene();
             _word[0]=scene.findActorByName("word-line1");

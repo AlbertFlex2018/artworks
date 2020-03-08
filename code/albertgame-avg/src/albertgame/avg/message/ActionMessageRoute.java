@@ -7,6 +7,7 @@ import afengine.part.message.Message;
 import albertgame.avg.AvgData;
 import albertgame.avg.action.BackAction;
 import albertgame.avg.action.BgmAction;
+import albertgame.avg.action.EndAction;
 import albertgame.avg.action.LinkAction;
 import albertgame.avg.action.PlayerAction;
 import albertgame.avg.action.WordAction;
@@ -25,6 +26,7 @@ public class ActionMessageRoute implements IMessageRoute{
         actionMap.put("link",new LinkAction());
         actionMap.put("player",new PlayerAction());
         actionMap.put("word",new WordAction());
+        actionMap.put("end",new EndAction());
     }
     
     @Override
@@ -41,6 +43,11 @@ public class ActionMessageRoute implements IMessageRoute{
         if(act!=null){
             act.action(AvgData.getInstance(), cmds);
             Debug.log("action:"+action);
+        }
+        if(!cmds[0].equals("end")){
+            AvgData data=AvgData.getInstance();
+            int index=Integer.parseInt(data.getDataMap().get("action-index"));            
+            data.getDataMap().replace("action-index",(index+1)+"");           
         }
     }
 }

@@ -2,5 +2,6 @@
 <story name="story3">
     <action>player hideall</action>
     <action>word 舞台2-故事1</action>
+    <action>word blank</action>
     <action>link story story4</action>
 </story>

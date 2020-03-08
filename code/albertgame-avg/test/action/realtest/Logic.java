@@ -7,6 +7,9 @@ package action.realtest;
 
 import afengine.core.IAppLogic;
 import afengine.core.util.XMLEngineBoot;
+import afengine.part.scene.Scene;
+import afengine.part.scene.SceneCenter;
+import afengine.part.scene.SceneFileHelp;
 import albertgame.avg.AvgConfigUtil;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -21,7 +24,7 @@ public class Logic implements IAppLogic {
         Document doc=XMLEngineBoot.readXMLFileDocument("test/action/realtest/avgconfig.xml");
         Element root=doc.getRootElement();
         util.loadConfigs(root);
-     return true;
+        return true;
     }
     @Override
     public boolean update(long l) {
@@ -29,8 +32,11 @@ public class Logic implements IAppLogic {
     }
 
     @Override
-    public boolean shutdown() {
+    public boolean shutdown(){
+        Scene scene = SceneCenter.getInstance().getRunningScene();
+        Document doc=XMLEngineBoot.getXMLWritableDocument("test/action/test/test2-scene.xml");
+        SceneFileHelp.outputSceneToXML(scene,doc.getRootElement());
+        XMLEngineBoot.writeXMLFile("test/action/test/test2-scene.xml", doc);
         return true;
     }
-    
 }

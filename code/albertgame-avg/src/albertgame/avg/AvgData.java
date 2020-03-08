@@ -14,6 +14,7 @@ public class AvgData {
         return data;
     }
     
+    //avgconfig path
     //stage-name,story-name,action-index    
     //display-left,display-center,display-right
     //left-name,left-state,center-name,center-state,right-name,right-state :name
@@ -27,6 +28,16 @@ public class AvgData {
             
     private AvgData(){
         dataMap=new HashMap<>();
+        stageMap=new HashMap<>();
+        clear();
+    }
+
+    public Map<String, String> getDataMap() {
+        return dataMap;
+    }
+    public final void clear(){
+        dataMap.clear();
+
         dataMap.put("back-path","");//背景图片路径
         dataMap.put("stage-name","");//当前舞台名称
         dataMap.put("story-name","");//当前故事名称
@@ -51,12 +62,10 @@ public class AvgData {
         dataMap.put("word-line4","");        
 
         dataMap.put("midi-path","");//背景音乐路径
-
-        stageMap=new HashMap<>();
-    }
-
-    public Map<String, String> getDataMap() {
-        return dataMap;
+        
+        dataMap.put("default-stage","");
+        dataMap.put("default-story","");
+        dataMap.put("avgconfig-path", "");        
     }
 
     public Map<String, AvgStage> getStageMap() {

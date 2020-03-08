@@ -2,4 +2,6 @@
 <story name="story4">    
     <action>player hideall</action>
     <action>word 舞台2-故事2</action>
+    <action>word blank</action>
+    <action>end reset</action>
 </story>

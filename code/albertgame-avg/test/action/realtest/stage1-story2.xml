@@ -5,5 +5,6 @@
     <action>back show test/action/test/back.jpg</action>
     <action>player hide left</action>    
     <action>back show test/action/test/1.png</action>
-    <action>link stage-story stage2 story3</action>    
+    <action>link stage-story stage2 story3</action>   
+    <action>word blank</action>
 </story>

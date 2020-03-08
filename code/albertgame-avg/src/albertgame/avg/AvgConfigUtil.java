@@ -5,6 +5,7 @@
  */
 package albertgame.avg;
 
+import afengine.core.util.Debug;
 import afengine.core.util.XMLEngineBoot;
 import albertgame.avg.story.AvgStage;
 import albertgame.avg.story.StageFileUtil;
@@ -18,6 +19,10 @@ public class AvgConfigUtil{
     /*
         <avg-config>
             <stages-config>
+                <initial>
+                    <defaultstate value=""/>
+                    <defaultstory value=""/>
+                </initial>
                 <stages>                    
                     <stage path=""/>
                     <stage path=""/>
@@ -30,6 +35,7 @@ public class AvgConfigUtil{
                 </saved-config>
             </stages-config>
             <datas>
+                <avgconfig-path value=""/>
                 <key value=""/>
                 <key value=""/>
                 <key value=""/>
@@ -40,6 +46,13 @@ public class AvgConfigUtil{
     public void loadConfigs(Element root){
         Element stagesconfig=root.element("stages-config");
         AvgData config=AvgData.getInstance();
+        Element initial=stagesconfig.element("initial");
+        Element defaultstage=initial.element("defaultstage");
+        Element defaultstory=initial.element("defaultstory");
+        config.getDataMap().replace("default-stage",defaultstage.attributeValue("value"));
+        config.getDataMap().replace("default-story",defaultstory.attributeValue("value"));
+        Debug.log("defaultstage:"+defaultstage.attributeValue("value"));
+        Debug.log("defaultstory:"+defaultstory.attributeValue("value"));
         Element stages=stagesconfig.element("stages");
         Iterator<Element> eiter=stages.elementIterator();
         while(eiter.hasNext()){
@@ -64,7 +77,7 @@ public class AvgConfigUtil{
         Element data=root.element("datas");
         Iterator<Element> eeiter=data.elementIterator();
         while(eeiter.hasNext()){
-            Element ele=eiter.next();
+            Element ele=eeiter.next();
             String value=ele.attributeValue("value");
             config.getDataMap().replace(ele.getName(), value);
         }

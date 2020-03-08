@@ -8,11 +8,7 @@ package action.test;
 import afengine.part.message.IMessageHandler;
 import afengine.part.message.Message;
 import afengine.part.message.MessageCenter;
-import albertgame.avg.AvgData;
 import albertgame.avg.message.ActionMessageRoute;
-import albertgame.avg.story.AvgStage;
-import albertgame.avg.story.IStoryAction;
-import albertgame.avg.story.Story;
 import java.awt.event.KeyEvent;
 
 public class KeyHandler implements IMessageHandler{
