@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stage name="stage1">
+    <players>
+        <player1>
+            <state1 texture="test/action/test/player1.png"/>
+            <state2 texture="test/action/test/player2.png"/>
+            <state3 texture="test/action/test/player3.png"/>
+        </player1>
+        <player2>
+            <state1 texture="test/action/test/player2.png"/>
+            <state2 texture="test/action/test/player3.png"/>
+            <state3 texture="test/action/test/player1.png"/>
+        </player2>
+        <player3>
+            <state1 texture="test/action/test/player3.png"/>
+            <state2 texture="test/action/test/player1.png"/>
+            <state3 texture="test/action/test/player2.png"/>
+        </player3>
+    </players>
+    <stories>
+        <story actionpath="test/action/realtest/stage1-story1.xml"/>
+        <story actionpath="test/action/realtest/stage1-story2.xml"/>
+    </stories>
+</stage>

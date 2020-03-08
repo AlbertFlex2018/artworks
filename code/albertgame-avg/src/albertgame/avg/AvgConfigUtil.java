@@ -5,10 +5,12 @@
  */
 package albertgame.avg;
 
+import afengine.core.util.XMLEngineBoot;
 import albertgame.avg.story.AvgStage;
 import albertgame.avg.story.StageFileUtil;
 import java.util.Iterator;
 import java.util.Map;
+import org.dom4j.Document;
 import org.dom4j.Element;
 
 
@@ -36,24 +38,28 @@ public class AvgConfigUtil{
         </avg-config>
     */
     public void loadConfigs(Element root){
-        Element stagesconfig=root.element("statges-config");
+        Element stagesconfig=root.element("stages-config");
         AvgData config=AvgData.getInstance();
         Element stages=stagesconfig.element("stages");
         Iterator<Element> eiter=stages.elementIterator();
         while(eiter.hasNext()){
             Element ele=eiter.next();
-            AvgStage stage=StageFileUtil.loadStoryStage(ele);
+            String path=ele.attributeValue("path");
+            Document doc=XMLEngineBoot.readXMLFileDocument(path);
+            if(doc==null)continue;
+
+            AvgStage stage=StageFileUtil.loadStoryStage(doc.getRootElement());
             String value=ele.attributeValue("path");
             stage.setPath(value);
             config.getStageMap().put(stage.getName(),stage);
         }
-        Element savedconfig=root.element("saved-config");
+        Element savedconfig=stagesconfig.element("saved-config");
         Element stagename=savedconfig.element("stage-name");
         Element storyname=savedconfig.element("story-name");
         Element actionindex=savedconfig.element("action-index");
-        config.getDataMap().replace("stage-name",stagename.getText());
-        config.getDataMap().replace("story-name",storyname.getText());
-        config.getDataMap().replace("action-index",actionindex.getText());
+        config.getDataMap().replace("stage-name",stagename.attributeValue("value"));
+        config.getDataMap().replace("story-name",storyname.attributeValue("value"));
+        config.getDataMap().replace("action-index",actionindex.attributeValue("value"));
         
         Element data=root.element("datas");
         Iterator<Element> eeiter=data.elementIterator();

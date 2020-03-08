@@ -19,9 +19,11 @@ import albertgame.avg.story.Player;
 public class PlayerAction implements IStoryAction{
     Actor[] player=new Actor[3];
     Actor[] title=new Actor[3];
+    Actor[] frame=new Actor[3];
     /*
         player show pos playername statename
         player hide pos
+        player hideall
     */  
     boolean init=false;
     @Override
@@ -34,11 +36,19 @@ public class PlayerAction implements IStoryAction{
             title[0]=scene.findActorByName("title-left");
             title[1]=scene.findActorByName("title-center");
             title[2]=scene.findActorByName("title-right");
-            
+            frame[0]=scene.findActorByName("image-left");
+            frame[1]=scene.findActorByName("image-center");
+            frame[2]=scene.findActorByName("image-right");
+            TextureRenderComponent titleimgcomp=(TextureRenderComponent) frame[0].getComponent(RenderComponent.COMPONENT_NAME);
+            titleimg[0]=titleimgcomp.getTexture();
+            TextureRenderComponent titleimgcomp1=(TextureRenderComponent) frame[1].getComponent(RenderComponent.COMPONENT_NAME);
+            titleimg[1]=titleimgcomp.getTexture();
+            TextureRenderComponent titleimgcomp2=(TextureRenderComponent) frame[2].getComponent(RenderComponent.COMPONENT_NAME);
+            titleimg[2]=titleimgcomp.getTexture();
             init=true;
         }
         int length=args.length;
-        if(length<3)return;
+        if(length<2)return;
         String cmd=args[1];
         switch(cmd){
             case "show":
@@ -47,6 +57,10 @@ public class PlayerAction implements IStoryAction{
             case "hide":
                 hide(data,args);
                 break;
+            case "hideall":
+                hide(data,"player","hide","left");
+                hide(data,"player","hide","center");
+                hide(data,"player","hide","right");
             default:break;
         }
     }   
@@ -57,21 +71,31 @@ public class PlayerAction implements IStoryAction{
         String pos=args[2];
         Player _player=data.getStageMap().get(data.getDataMap().get("stage-name")).getPlayerByName(playername);
         if(_player!=null){
-            Actor dest=null,desttitle=null;
-            if(pos.equals("left")){
-                dest=player[0];
-                desttitle=title[0];
-            }else if(pos.equals("center")){
-                dest=player[1];
-                desttitle=title[1];
-            }else if(pos.equals("right")){
-                dest=player[2];
-                desttitle=title[2];
-            }else;
-            
+        Actor dest = null, desttitle = null, destframe = null;
+        int index=-1;
+        if (pos.equals("left")) {
+            dest = player[0];
+            index=0;
+            desttitle = title[0];
+            destframe = frame[0];
+        } else if (pos.equals("center")) {
+            dest = player[1];
+            index=1;
+            desttitle = title[1];
+            destframe = frame[1];
+        } else if (pos.equals("right")) {
+            dest = player[2];
+            index=2;
+            desttitle = title[2];
+            destframe = frame[2];
+        } else;
+        if(index==-1)return;
+
+        
             if(dest!=null){
                 TextureRenderComponent comp=(TextureRenderComponent) dest.getComponent(RenderComponent.COMPONENT_NAME);
                 TextRenderComponent titlecomp=(TextRenderComponent) desttitle.getComponent(RenderComponent.COMPONENT_NAME);
+                TextureRenderComponent titleimgcomp=(TextureRenderComponent) destframe.getComponent(RenderComponent.COMPONENT_NAME);
                 ITexture texture=_player.getTexture(statename);
                 if(texture!=null){
                     comp.setTexture(texture);
@@ -79,25 +103,43 @@ public class PlayerAction implements IStoryAction{
                     data.getDataMap().replace(pos+"-state",statename);
                     data.getDataMap().replace("display-"+pos,"true");
                     titlecomp.getText().value=playername;
+                    titleimgcomp.setTexture(titleimg[index]);
                 }
             }
         }
     }    
+    ITexture[] titleimg=new ITexture[3];
     //player hide pos
     private void hide(AvgData data,String ... args){
         String pos = args[2];
-        Actor dest = null;
+        int index=-1;
+        Actor dest = null, desttitle = null, destframe = null;
         if (pos.equals("left")) {
             dest = player[0];
+            index=0;
+            desttitle = title[0];
+            destframe = frame[0];
         } else if (pos.equals("center")) {
             dest = player[1];
+            index=1;
+            desttitle = title[1];
+            destframe = frame[1];
         } else if (pos.equals("right")) {
             dest = player[2];
+            index=2;
+            desttitle = title[2];
+            destframe = frame[2];
         } else;
+        if(index==-1)return;
         
         if(dest!=null){
             TextureRenderComponent comp = (TextureRenderComponent) dest.getComponent(RenderComponent.COMPONENT_NAME);
+            TextRenderComponent titlecomp=(TextRenderComponent) desttitle.getComponent(RenderComponent.COMPONENT_NAME);
+            TextureRenderComponent titleimgcomp=(TextureRenderComponent) destframe.getComponent(RenderComponent.COMPONENT_NAME);
             comp.setTexture(null);
+            titlecomp.getText().value="";
+            titleimg[index]=titleimgcomp.getTexture();
+            titleimgcomp.setTexture(null);
             data.getDataMap().replace("display-" + pos, "false");
         }
     }    

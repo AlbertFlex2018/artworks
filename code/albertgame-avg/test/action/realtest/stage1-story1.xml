@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story name="story1">
+    <action>player hideall</action>
+    <action>bgm prepare back test/action/test/midi1.mid</action>
+    <action>bgm play back</action>
+    <action>back show test/action/test/1.png</action>
+    <action>back show test/action/test/back.jpg</action>
+    <action>player show left player1 state1</action>
+    <action>link story story2</action>
+</story>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<avg-config>
+    <stages-config>
+        <stages>                    
+            <stage path="test/action/realtest/stage1.xml"/>
+            <stage path="test/action/realtest/stage2.xml"/>
+        </stages>
+        <saved-config>
+            <stage-name value="stage1"/>
+            <story-name value="story1"/>
+            <action-index value="0"/>
+        </saved-config>
+    </stages-config>
+    <datas/>
+</avg-config>

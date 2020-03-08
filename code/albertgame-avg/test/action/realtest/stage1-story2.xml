@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story name="story2">    
+    <action>player hideall</action>
+    <action>player show left player1 state2</action>
+    <action>back show test/action/test/back.jpg</action>
+    <action>player hide left</action>    
+    <action>back show test/action/test/1.png</action>
+    <action>link stage-story stage2 story3</action>    
+</story>

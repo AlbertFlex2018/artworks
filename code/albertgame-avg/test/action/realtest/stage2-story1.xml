@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story name="story3">
+    <action>player hideall</action>
+    <action>word 舞台2-故事1</action>
+    <action>link story story4</action>
+</story>

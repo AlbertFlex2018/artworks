@@ -33,7 +33,7 @@ public class LinkAction implements IStoryAction{
         data.getDataMap().replace("display-right","false");
     }
     public void linkStory(AvgData data,String ... args){
-        String storyname=args[3];
+        String storyname=args[2];
         data.getDataMap().replace("story-name",storyname);
         data.getDataMap().replace("action-index","0");
         data.getDataMap().replace("display-left","false");
