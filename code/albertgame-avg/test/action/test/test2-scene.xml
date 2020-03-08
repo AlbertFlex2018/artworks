@@ -74,28 +74,28 @@
     <word-line1 mod="test/scenetest2/modlibs.xml#textmod">
       <transform pos="50.0,370.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
       <datas>
-        <rendertext value="这是第一行"/>
+        <rendertext value=""/>
         <rendersize value="35"/>
       </datas>
     </word-line1>
     <word-line2 mod="test/scenetest2/modlibs.xml#textmod">
       <transform pos="50.0,415.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
       <datas>
-        <rendertext value="这是第一行"/>
+        <rendertext value=""/>
         <rendersize value="35"/>
       </datas>
     </word-line2>
     <word-line3 mod="test/scenetest2/modlibs.xml#textmod">
       <transform pos="50.0,460.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
       <datas>
-        <rendertext value="这是第一行"/>
+        <rendertext value=""/>
         <rendersize value="35"/>
       </datas>
     </word-line3>
     <word-line4 mod="test/scenetest2/modlibs.xml#textmod">
       <transform pos="50.0,505.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
       <datas>
-        <rendertext value="这是第一行"/>
+        <rendertext value=""/>
         <rendersize value="35"/>
       </datas>
     </word-line4>
