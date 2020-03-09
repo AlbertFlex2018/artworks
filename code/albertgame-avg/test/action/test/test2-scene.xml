@@ -9,94 +9,94 @@
       </datas>
     </back>
     <player-left mod="test/action/test/modlibs.xml#imagemod">
-      <transform pos="30.0,50.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
+      <transform pos="30.0,430.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,1.0,0.0,0.0"/>
       <datas>
         <imagepath value="test/action/test/player1_1.png"/>
       </datas>
     </player-left>
     <player-center mod="test/action/test/modlibs.xml#imagemod">
-      <transform pos="400.0,350.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.5,1.0,0.0,0.0"/>
+      <transform pos="400.0,430.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.5,1.0,0.0,0.0"/>
       <datas>
         <imagepath value="test/action/test/player2_1.png"/>
       </datas>
     </player-center>
     <player-right mod="test/action/test/modlibs.xml#imagemod">
-      <transform pos="740.0,350.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="1.0,1.0,0.0,0.0"/>
+      <transform pos="740.0,430.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="1.0,1.0,0.0,0.0"/>
       <datas>
         <imagepath value="test/action/test/player3_1.png"/>
       </datas>
     </player-right>
     <image-left mod="test/action/test/modlibs.xml#imagemod">
-      <transform pos="30.0,350.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,1.0,0.0,0.0"/>
+      <transform pos="30.0,430.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,1.0,0.0,0.0"/>
       <datas>
         <imagepath value="test/action/test/title.png"/>
       </datas>
     </image-left>
     <image-center mod="test/action/test/modlibs.xml#imagemod">
-      <transform pos="400.0,350.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.5,1.0,0.0,0.0"/>
+      <transform pos="400.0,430.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.5,1.0,0.0,0.0"/>
       <datas>
         <imagepath value="test/action/test/title.png"/>
       </datas>
     </image-center>
     <image-right mod="test/action/test/modlibs.xml#imagemod">
-      <transform pos="740.0,350.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="1.0,1.0,0.0,0.0"/>
+      <transform pos="740.0,430.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="1.0,1.0,0.0,0.0"/>
       <datas>
         <imagepath value="test/action/test/title.png"/>
       </datas>
     </image-right>
     <title-left mod="test/action/test/modlibs.xml#textmod">
-      <transform pos="30.0,350.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,1.0,0.0,0.0"/>
+      <transform pos="30.0,430.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,1.0,0.0,0.0"/>
       <datas>
         <rendertext value="夏文纯一"/>
-        <rendersize value="40"/>
+        <rendersize value="35"/>
       </datas>
     </title-left>
     <title-center mod="test/action/test/modlibs.xml#textmod">
-      <transform pos="400.0,350.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.5,1.0,0.0,0.0"/>
+      <transform pos="400.0,430.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.5,1.0,0.0,0.0"/>
       <datas>
         <rendertext value="阿尔伯特"/>
-        <rendersize value="40"/>
+        <rendersize value="35"/>
       </datas>
     </title-center>
     <title-right mod="test/action/test/modlibs.xml#textmod">
-      <transform pos="740.0,350.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="1.0,1.0,0.0,0.0"/>
+      <transform pos="740.0,430.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="1.0,1.0,0.0,0.0"/>
       <datas>
         <rendertext value="夏洛克"/>
-        <rendersize value="40"/>
+        <rendersize value="35"/>
       </datas>
     </title-right>
     <dialog-back mod="test/action/test/modlibs.xml#imagemod">
-      <transform pos="30.0,350.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
+      <transform pos="30.0,430.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
       <datas>
         <imagepath value="test/action/test/dialog.png"/>
       </datas>
     </dialog-back>
     <word-line1 mod="test/action/test/modlibs.xml#textmod">
-      <transform pos="50.0,370.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
+      <transform pos="50.0,450.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
       <datas>
         <rendertext value=""/>
-        <rendersize value="35"/>
+        <rendersize value="20"/>
       </datas>
     </word-line1>
     <word-line2 mod="test/action/test/modlibs.xml#textmod">
-      <transform pos="50.0,415.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
+      <transform pos="50.0,480.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
       <datas>
         <rendertext value=""/>
-        <rendersize value="35"/>
+        <rendersize value="20"/>
       </datas>
     </word-line2>
     <word-line3 mod="test/action/test/modlibs.xml#textmod">
-      <transform pos="50.0,460.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
+      <transform pos="50.0,510.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
       <datas>
         <rendertext value=""/>
-        <rendersize value="35"/>
+        <rendersize value="20"/>
       </datas>
     </word-line3>
     <word-line4 mod="test/action/test/modlibs.xml#textmod">
-      <transform pos="50.0,505.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
+      <transform pos="50.0,540.0,0.0,0.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,1.0" anchor="0.0,0.0,0.0,0.0"/>
       <datas>
         <rendertext value=""/>
-        <rendersize value="35"/>
+        <rendersize value="20"/>
       </datas>
     </word-line4>
   </actordata>
