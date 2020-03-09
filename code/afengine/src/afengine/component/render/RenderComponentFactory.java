@@ -46,6 +46,9 @@ public class RenderComponentFactory implements IComponentFactory{
             case "Texture":
                 comp=createTexture(element,datas);
                 break;
+            case "Rect":
+                comp=createRect(element,datas);
+                break;
             default:
                 comp=createExtra(element,datas);
                 break;                
@@ -154,6 +157,40 @@ public class RenderComponentFactory implements IComponentFactory{
         return textcomp;
     }
     
+    /**
+     * <Render type="Rect">
+     *    <shape width="" height="" arcwidth="" archeight="" fill=""/>
+     *    <color value="r,g,b,a"/>
+     * </Render>
+     */
+    private RenderComponent createRect(Element element,Map<String,String> datas){
+        Element shape=element.element("shape");
+        Element color=element.element("color");
+        String width=ActorComponent.getRealValue(shape.attributeValue("width"), datas);
+        String height=ActorComponent.getRealValue(shape.attributeValue("height"), datas);
+        String arcwidth=ActorComponent.getRealValue(shape.attributeValue("arcwidth"), datas);
+        String archeight=ActorComponent.getRealValue(shape.attributeValue("archeight"), datas);
+        String colors=ActorComponent.getRealValue(color.attributeValue("value"), datas);
+        String fill=ActorComponent.getRealValue(shape.attributeValue("fill"), datas);
+
+        String[] colorm=colors.split(",");
+        String r=colorm[0];
+        String g=colorm[1];
+        String b=colorm[2];
+        String a=colorm[3];
+        RectRenderComponent rect=new RectRenderComponent();
+        IGraphicsTech tech=((WindowApp)AppState.getRunningApp()).getGraphicsTech();
+        
+        rect.setColor(tech.createColor(Integer.parseInt(r),Integer.parseInt(g) , Integer.parseInt(b), Integer.parseInt(a)));
+        rect.setWidth(Integer.parseInt(width));
+        rect.setHeight(Integer.parseInt(height));
+        rect.setArcWidth(Integer.parseInt(arcwidth));
+        rect.setArcHeight(Integer.parseInt(archeight));
+        
+        boolean f=Boolean.parseBoolean(fill);
+        rect.setFill(f);
+        return rect;
+    }
     /**
      * <Render type="Texture">
      *      <texture>path</texture>

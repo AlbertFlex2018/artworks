@@ -31,6 +31,7 @@ public interface IGraphicsDraw {
     public void drawPolygon(float[] x,float[] y,boolean fill);
     public void drawOval(float x,float y,float w,float h,boolean fill);    
     public void drawCircle(float x,float y,float radius,boolean fill);
+    public void drawRoundRect(float x,float y,float width,float height,float arcWidth,float artHeight,boolean fill);
     
     public void drawTexture(float x,float y,ITexture texture);
     public void drawText(float x,float y,IFont font,IColor color,String text);

@@ -25,11 +25,23 @@
                 <texturepath value="test/assets/1.png"/>
             </datas>                        
         </actor3>
+        <actor4 mod="test/all/modlib.xml#mod6">
+            <transform pos="50,1.0,1.0,1.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,0.0" anchor="0.0,0.0,0.0,0.0"/>     
+            <datas>
+                <rectwidth value="100"/>
+                <rectheight value="200"/>
+                <rectarcw value="10"/>
+                <rectarch value="10"/>
+                <rectcolor value="100,100,100,155"/>
+                <rectfill value="true"/>
+            </datas>
+        </actor4>
     </actordata>
     <actormap>
         <actor1/>
         <actor2>
             <actor3/>
+            <actor4/>
         </actor2>
     </actormap>
 </scene>

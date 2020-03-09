@@ -16,4 +16,10 @@
             <size>30</size>
         </Render>
     </mod5>
+    <mod6>
+        <Render type="Rect">
+            <shape width="#rectwidth" height="#rectheight" arcwidth="#rectarcw" archeight="#rectarch" fill="#rectfill"/>
+            <color value="#rectcolor"/>
+        </Render>
+    </mod6>
 </modlibs>

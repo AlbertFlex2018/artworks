@@ -674,6 +674,13 @@ public class GraphicsTech_Java2D implements IGraphicsTech{
         }
         this.window.setLocation(x, y);
     }
+
+    @Override
+    public void drawRoundRect(float x, float y, float width, float height, float arcWidth, float arcHeight,boolean fill) {
+        if(fill)
+            graphics.fillRoundRect((int)x, (int)y, (int)width, (int)height, (int)arcWidth,(int)arcHeight);
+        else   graphics.drawRoundRect((int)x, (int)y, (int)width, (int)height, (int)arcWidth,(int)arcHeight);
+    }
     
     private static class NullRepaint extends RepaintManager
     {   

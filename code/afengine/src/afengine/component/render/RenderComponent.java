@@ -136,5 +136,13 @@ public class RenderComponent extends ActorComponent{
     public void setRenderOrder(int renderOrder) {
         this.renderOrder = renderOrder;
     }
-    
+    public boolean isInScreen(SceneCamera camera,IGraphicsTech tech){
+        int dx=this.getRenderX(camera);
+        int dy=this.getRenderY(camera);
+        int dxx=dx+this.getRenderWidth();
+        int dyy=dy+this.getRenderHeight();
+        int screenwidth=tech.getWindowWidth();
+        int screenheight=tech.getWindowHeight();
+        return !(dxx<0||dx>screenwidth||dyy<0||dy>screenheight);
+    }
 }
