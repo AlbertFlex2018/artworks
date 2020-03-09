@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <story name="story1">
-    <action>player hideall</action>
-    <action>bgm prepare back test/action/test/midi1.mid</action>
+    <action>bgm prepare back test/action/realtest/Layee.mid</action>
     <action>bgm play back</action>
     <action>word 微风习习吹袭着我略有摇摆的发梢，抚摸着我微凉的脸蛋，拉扯着我的裤子。</action>
     <action>word 渐渐地，我睁开了眼，看着眼前一片繁华的景象，心里没有一丝悔恨，对于这个世界，我已经没有遗憾了。</action>

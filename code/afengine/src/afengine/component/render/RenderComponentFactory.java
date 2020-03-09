@@ -111,21 +111,22 @@ public class RenderComponentFactory implements IComponentFactory{
         }
         Element fonte = element.element("font");
         String sizes = element.elementText("size");
+        int siz=Integer.parseInt(ActorComponent.getRealValue(sizes,datas));
         String path=null;
         if(fonte==null){
             font= ((IGraphicsTech)((WindowApp)AppState.getRunningApp())
                     .getGraphicsTech()).createFont("Dialog", false,
-                            IFont.FontStyle.PLAIN, 30);
+                            IFont.FontStyle.PLAIN, siz);
         }
         else if(fonte.attribute("path")!=null){
             path=ActorComponent.getRealValue(fonte.attributeValue("path"),datas);            
                 font = ((IGraphicsTech)((WindowApp)AppState.getRunningApp()).
-                    getGraphicsTech()).createFont(ActorComponent.getRealValue(fonte.getText(),datas), true, IFont.FontStyle.PLAIN, Integer.parseInt(sizes));                        
+                    getGraphicsTech()).createFont(ActorComponent.getRealValue(fonte.getText(),datas), true, IFont.FontStyle.PLAIN, siz);                        
         }
         else{
             font= ((IGraphicsTech)((WindowApp)AppState.getRunningApp())
                     .getGraphicsTech()).createFont("Dialog", false,
-                            IFont.FontStyle.PLAIN,Integer.parseInt(sizes));            
+                            IFont.FontStyle.PLAIN,siz);            
         }
         Element colore = element.element("color");
         String colors;

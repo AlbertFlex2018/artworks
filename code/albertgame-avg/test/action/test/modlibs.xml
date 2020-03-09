@@ -8,7 +8,7 @@
     <textmod>
         <Render type="Text">
             <text>#rendertext</text>
-            <size>#rendersize</size>
+            <size>20</size>
         </Render>
     </textmod>
 </modlibs>
