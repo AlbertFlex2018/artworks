@@ -73,6 +73,9 @@ public class RectRenderComponent extends RenderComponent{
     }
     @Override
     protected void render(SceneCamera camera, IGraphicsTech tech) {
+        super.renderWidth=this.renderWidth;
+        super.renderHeight=this.renderHeight;
+
         int dx=super.getRenderX(camera);
         int dy=super.getRenderY(camera);
         IColor oldc=tech.getColor();

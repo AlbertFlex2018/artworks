@@ -28,8 +28,8 @@
         <actor4 mod="test/all/modlib.xml#mod6">
             <transform pos="50,1.0,1.0,1.0" rotate="0.0,0.0,0.0,0.0" scale="1.0,1.0,1.0,0.0" anchor="0.0,0.0,0.0,0.0"/>     
             <datas>
-                <rectwidth value="100"/>
-                <rectheight value="200"/>
+                <rectwidth value="400"/>
+                <rectheight value="50"/>
                 <rectarcw value="10"/>
                 <rectarch value="10"/>
                 <rectcolor value="100,100,100,155"/>
